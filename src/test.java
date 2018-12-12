@@ -1,13 +1,30 @@
 public class test {
   public static void main(String[] args) {
-    ArrayMapTest();
+    SetTest();
+  }
+  public static void SetTest(){
+    ArraySet<Integer> s = new ArraySet<Integer>();
+    for(int i=0;i<40;i++){
+      s.add(i%15);
+    }
+    System.out.println(s);
   }
   public static void ArrayMapTest(){
-    ArrayMap<Integer,Double> map = new ArrayMap<Integer,Double>();
-    for(int i=1;i<11;i++){
-      map.add(i,(double) i*3.2);
+    ArrayMap<Double,String> map = new ArrayMap<Double,String>();
+    for(int i=0;i<241;i++){
+      map.add((double) i%60,String.valueOf(i));
     }
     System.out.println(map);
+    System.out.println(map.size());
+    map.remove(29.0);
+    System.out.println(map.size());
+    for(int i=0;i<5;i++){
+      System.out.println(map.remove(12.0));
+    }
+    System.out.println(map.get(1.0));
+    map.set(30.0,"hey guys");
+    System.out.println(map);
+    System.out.println(map.get(30.0));
   }
   public static void HashmapTest(){
     HashMap<Integer,String> map = new HashMap<Integer,String>();
