@@ -1,6 +1,24 @@
 public class test {
   public static void main(String[] args) {
-    StackQueueTest();
+    HashmapTest();
+  }
+  public static void HashmapTest(){
+    HashMap<Integer,String> map = new HashMap<Integer,String>();
+    for(int i=0;i<241;i++){
+      map.add(i%50,String.valueOf(i));
+    }
+    System.out.println(map);
+    System.out.println(map.size());
+    map.removeAll(29);
+    System.out.println(map.size());
+    for(int i=0;i<5;i++){
+      System.out.println(map.remove(12));
+    }
+    System.out.println(map.get(1));
+    map.set(30,"fuck");
+    System.out.println(map);
+    System.out.println(map.get(30));
+
   }
   public static void StackQueueTest(){
     Stack<Double> s = new Stack<Double>();
