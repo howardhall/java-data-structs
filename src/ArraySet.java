@@ -1,4 +1,3 @@
-import java.util.Iterator;
 public class ArraySet<E> implements iSet<E>{
   private ArrayList<E> data;
   public ArraySet(){

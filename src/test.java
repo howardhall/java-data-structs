@@ -7,7 +7,11 @@ public class test {
     for(int i=0;i<40;i++){
       s.add(i%15);
     }
+    s.remove(12);
+    s.remove(6);
+    System.out.println(s.contains(5));
     System.out.println(s);
+
   }
   public static void ArrayMapTest(){
     ArrayMap<Double,String> map = new ArrayMap<Double,String>();
