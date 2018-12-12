@@ -1,6 +1,13 @@
 public class test {
   public static void main(String[] args) {
-    HashmapTest();
+    ArrayMapTest();
+  }
+  public static void ArrayMapTest(){
+    ArrayMap<Integer,Double> map = new ArrayMap<Integer,Double>();
+    for(int i=1;i<11;i++){
+      map.add(i,(double) i*3.2);
+    }
+    System.out.println(map);
   }
   public static void HashmapTest(){
     HashMap<Integer,String> map = new HashMap<Integer,String>();
@@ -15,7 +22,7 @@ public class test {
       System.out.println(map.remove(12));
     }
     System.out.println(map.get(1));
-    map.set(30,"fuck");
+    map.set(30,"hey guys");
     System.out.println(map);
     System.out.println(map.get(30));
 
