@@ -1,17 +1,31 @@
 public class test {
   public static void main(String[] args) {
-    SetTest();
+    PQtest();
+  }
+  public static void PQtest(){
+    LinkedPriorityQueue<Short,String> pq = new LinkedPriorityQueue<Short,String>();
+    String lol = "fourth";
+    pq.add((short) 12,"second");
+    pq.add((short) 4,"first");
+    pq.add((short) 19,"third");
+    pq.add((short) 36,"fifth");
+    pq.add((short) 22,lol);
+    System.out.println(pq.peek());
+    System.out.println(pq.remove());
+    System.out.println(pq.remove());
+    System.out.println(pq.contains(lol));
+    System.out.println(pq);
   }
   public static void SetTest(){
-    ArraySet<Integer> s = new ArraySet<Integer>();
+    HashSet<Integer> s = new HashSet<Integer>(5);
     for(int i=0;i<40;i++){
       s.add(i%15);
     }
     s.remove(12);
     s.remove(6);
     System.out.println(s.contains(5));
+    s.add(5);
     System.out.println(s);
-
   }
   public static void ArrayMapTest(){
     ArrayMap<Double,String> map = new ArrayMap<Double,String>();
