@@ -1,6 +1,6 @@
-package ds.priorityqueue;
-import ds.list.LinkedList;
-import ds.util.Pair;
+package src.priorityqueue;
+import src.list.LinkedList;
+import src.util.Pair;
 import java.lang.Comparable;
 public class LinkedPriorityQueue<K extends Comparable<K>,V> implements iPriorityQueue<K,V> {
   private LinkedList<Pair<K,V>> data;

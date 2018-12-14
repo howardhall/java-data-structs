@@ -1,4 +1,4 @@
-package ds.map;
+package src.map;
 public interface iMap<K,V> {
   public void add(K k, V v);
   public V get(K k);

@@ -1,4 +1,4 @@
-package ds.list;
+package src.list;
 public interface iList<E> {
   public void add(E e);
   public E get(int index);

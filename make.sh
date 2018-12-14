@@ -8,7 +8,7 @@ function build (){
 }
 function run (){
   if [ -z "$1" ]; then
-    target="test"
+    target="src/test"
   else
     target="$1"
   fi
@@ -17,11 +17,11 @@ function run (){
 }
 function build2 (){
   mkdir "build"
-  dirs = ( "util" "list" "map" "priorityqueue" "queue" "set" )
+  dirs=( "util" "list" "map" "priorityqueue" "queue" "set" )
   for i in "${dirs[@]}"
   do
     mkdir "build/$i"
-    javac -d "build/$i" "src/$i/*.java"
+    javac -d build/$i src/$i/*.java
   done
   javac -d build src/*.java
 }

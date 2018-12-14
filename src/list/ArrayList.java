@@ -1,4 +1,4 @@
-package ds.list;
+package src.list;
 import java.util.Iterator;
 public class ArrayList<E> implements Iterable<E>, iList<E>{
   private Object[] data;

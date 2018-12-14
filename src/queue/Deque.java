@@ -1,5 +1,5 @@
-package ds.queue;
-import ds.list.LinkedList;
+package src.queue;
+import src.list.LinkedList;
 public class Deque<E> {
   private LinkedList<E> data;
   public Deque(){

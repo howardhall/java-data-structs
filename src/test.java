@@ -1,6 +1,8 @@
+package src;
+import src.priorityqueue.HeapPriorityQueue;
 public class test {
   public static void main(String[] args) {
-    StackQueueTest();
+    PQtest();
   }
   public static void PQtest(){
     HeapPriorityQueue<Short,String> pq = new HeapPriorityQueue<Short,String>();
@@ -24,6 +26,7 @@ public class test {
     System.out.println(pq.contains("fire"));
     System.out.println(pq);
   }
+  /*
   public static void SetTest(){
     HashSet<Integer> s = new HashSet<Integer>(5);
     for(int i=0;i<40;i++){
@@ -97,4 +100,5 @@ public class test {
     System.out.println(al.size());
     System.out.println(al.indexOf("lmao"));
   }
+  */
 }

@@ -1,5 +1,6 @@
-package ds.map;
-import ds.list.LinkedList;
+package src.map;
+import src.list.LinkedList;
+import src.util.Pair;
 public class HashMap<K,V> implements iMap<K,V> {
   private LinkedList<Pair<K,V>>[] data;
   private int buckets;

@@ -1,4 +1,4 @@
-package ds.priorityqueue;
+package src.priorityqueue;
 import java.lang.Comparable;
 public interface iPriorityQueue<K extends Comparable<K>,V> {
   public void add(K k, V v);

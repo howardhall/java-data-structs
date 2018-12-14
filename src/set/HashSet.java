@@ -1,5 +1,5 @@
-package ds.set;
-import ds.list.LinkedList;
+package src.set;
+import src.list.LinkedList;
 public class HashSet<E> implements iSet<E>{
   private LinkedList<E>[] data;
   private int buckets;
