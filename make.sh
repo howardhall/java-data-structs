@@ -2,9 +2,13 @@
 function clean (){
   rm -rf "build/"
 }
-function build (){
+function buildtest (){
   mkdir "build"
   javac -d build src/test.java -cp .
+}
+function build (){
+  mkdir "build"
+  javac -d build $(find -name "*.java") -cp .
 }
 function run (){
   if [ -z "$1" ]; then
@@ -15,11 +19,17 @@ function run (){
   cd build
   java $target
 }
-while getopts cbr opt; do
+while getopts cbtr opt; do
   case $opt in
     c)
       echo "clean"
       clean
+      ;;
+    t)
+      echo "build test"
+      clean
+      buildtest
+      run "src/test"
       ;;
     b)
       echo "build"
