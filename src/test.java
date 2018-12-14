@@ -1,5 +1,5 @@
 package src;
-import src.priorityqueue.HeapPriorityQueue;
+import src.pq.HeapPriorityQueue;
 public class test {
   public static void main(String[] args) {
     PQtest();

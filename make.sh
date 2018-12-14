@@ -17,7 +17,7 @@ function run (){
 }
 function build2 (){
   mkdir "build"
-  dirs=( "util" "list" "map" "priorityqueue" "queue" "set" )
+  dirs=( "util" "list" "map" "pq" "queue" "set" )
   for i in "${dirs[@]}"
   do
     mkdir "build/$i"

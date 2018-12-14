@@ -1,4 +1,4 @@
-package src.priorityqueue;
+package src.pq;
 import src.list.LinkedList;
 import src.util.Pair;
 import java.lang.Comparable;
