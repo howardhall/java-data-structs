@@ -3,17 +3,25 @@ public class test {
     PQtest();
   }
   public static void PQtest(){
-    LinkedPriorityQueue<Short,String> pq = new LinkedPriorityQueue<Short,String>();
-    String lol = "fourth";
-    pq.add((short) 12,"second");
+    HeapPriorityQueue<Short,String> pq = new HeapPriorityQueue<Short,String>();
     pq.add((short) 4,"first");
+    pq.add((short) 12,"second");
+    pq.add((short) 99,"tenth");
+    pq.add((short) 65,"ninth");
+    pq.add((short) 41,"sixth");
+    pq.add((short) 51,"seventh");
     pq.add((short) 19,"third");
     pq.add((short) 36,"fifth");
-    pq.add((short) 22,lol);
+    pq.add((short) 22,"fourth");
+    pq.add((short) 64,"eighth");
     System.out.println(pq.peek());
-    System.out.println(pq.remove());
-    System.out.println(pq.remove());
-    System.out.println(pq.contains(lol));
+    while(!pq.isEmpty()){
+      System.out.println(pq.remove());
+    }
+    pq.add((short) 36,"water");
+    pq.add((short) 22,"grass");
+    pq.add((short) 64,"fire");
+    System.out.println(pq.contains("fire"));
     System.out.println(pq);
   }
   public static void SetTest(){

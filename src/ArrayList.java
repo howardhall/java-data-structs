@@ -2,14 +2,14 @@ import java.util.Iterator;
 public class ArrayList<E> implements Iterable<E>, iList<E>{
   private Object[] data;
   private int size;
-  private int capacity;
+  protected int capacity;
   public ArrayList(int c){
     this.data = new Object[c];
     this.size = 0;
     this.capacity = c;
   }
   public ArrayList(){
-    this(100);
+    this(10);
   }
   public void add(E e, int index){
     if(index < 0 ){
@@ -36,7 +36,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     return this.size;
   }
   public void extend(){
-    this.extend(this.capacity*2);
+    this.extend((int) (this.capacity*1.5)+1);
   }
   public void extend(int c){
     Object[] temp = new Object[c];
@@ -85,8 +85,10 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
   public E removeFirst(){
     return this.remove(0);
   }
-  
-  public void set(E e, int index){
+  public E removeLast(){
+    return this.remove(this.size() - 1);
+  }
+  public void set(int index, E e){
     if(index < 0 || index >= this.size){
       return;
     }
