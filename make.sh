@@ -4,7 +4,7 @@ function clean (){
 }
 function build (){
   mkdir "build"
-  javac -d build src/*.java
+  javac -d build src/test.java -cp .
 }
 function run (){
   if [ -z "$1" ]; then
@@ -15,16 +15,6 @@ function run (){
   cd build
   java $target
 }
-function build2 (){
-  mkdir "build"
-  dirs=( "util" "list" "map" "pq" "queue" "set" )
-  for i in "${dirs[@]}"
-  do
-    mkdir "build/$i"
-    javac -d build/$i src/$i/*.java
-  done
-  javac -d build src/*.java
-}
 while getopts cbr opt; do
   case $opt in
     c)
@@ -34,7 +24,7 @@ while getopts cbr opt; do
     b)
       echo "build"
       clean
-      build2
+      build
       ;;
     r)
       echo "run"
