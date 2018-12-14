@@ -28,7 +28,7 @@ public class Pair<K,V> {
     return this.key.equals(k);
   }
   public boolean equalsValue(V v){
-    return this.key.equals(v);
+    return this.value.equals(v);
   }
   public boolean equals(K k, V v){
     return this.equalsKey(k) && this.equalsValue(v);
