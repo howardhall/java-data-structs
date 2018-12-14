@@ -1,3 +1,5 @@
+package ds.set;
+import ds.list.ArrayList;
 public class ArraySet<E> implements iSet<E>{
   private ArrayList<E> data;
   public ArraySet(){

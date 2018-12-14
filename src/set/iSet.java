@@ -1,3 +1,4 @@
+package ds.set;
 public interface iSet<E> {
   public void add(E e);
   public void clear();

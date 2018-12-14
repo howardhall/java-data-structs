@@ -1,3 +1,6 @@
+package ds.priorityqueue;
+import ds.list.ArrayList;
+import ds.util.Pair;
 import java.lang.Comparable;
 public class HeapPriorityQueue<K extends Comparable<K>,V> implements iPriorityQueue<K,V> {
   private ModdedArrayList<Pair<K,V>> data;

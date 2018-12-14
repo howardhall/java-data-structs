@@ -1,6 +1,6 @@
 public class test {
   public static void main(String[] args) {
-    PQtest();
+    StackQueueTest();
   }
   public static void PQtest(){
     HeapPriorityQueue<Short,String> pq = new HeapPriorityQueue<Short,String>();
@@ -71,15 +71,15 @@ public class test {
 
   }
   public static void StackQueueTest(){
-    Stack<Double> s = new Stack<Double>();
-    Queue<Double> q = new Queue<Double>();
+    Deque<Double> s = new Deque<Double>();
+    Deque<Double> q = new Deque<Double>();
     double[] vals = {1.0, 2.0, 3.0, 4.0};
     for(double item : vals){
       s.push(item);
       q.push(item);
     }
-    System.out.println(s.peek());
-    System.out.println(q.peek());
+    System.out.println(s.pop());
+    System.out.println(q.pull());
   }
   public static void ArrayListTest(){
     ArrayList<String> al = new ArrayList<String>();

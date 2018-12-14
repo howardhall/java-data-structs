@@ -1,28 +1,21 @@
-public class Deque<E> {
+package ds.queue;
+import ds.list.LinkedList;
+public class Stack<E> {
   private LinkedList<E> data;
-  public Deque(){
+  public Stack(){
     data = new LinkedList<E>();
   }
   public void push(E e){
-    data.addLast(e);
-  }
-  public E pull(){
-    return data.removeL();
+    data.addFirst(e);
   }
   public E pop(){
-    return data.removeLast();
+    return data.removeFirst();
   }
-  public E peekFirst(){
+  public E peek(){
     if(this.isEmpty()){
       return null;
     }
     return data.first();
-  }
-  public E peekLast(){
-    if(this.isEmpty()){
-      return null;
-    }
-    return data.last();
   }
   public boolean isEmpty(){
     return data.isEmpty();
@@ -31,6 +24,6 @@ public class Deque<E> {
     return data.size();
   }
   public String toString(){
-    return data.toString("Queue (",")");
+    return data.toString("Stack (",")");
   }
 }

@@ -1,3 +1,5 @@
+package ds.queue;
+import ds.list.LinkedList;
 public class Queue<E> {
   private LinkedList<E> data;
   public Queue(){

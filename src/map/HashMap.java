@@ -1,3 +1,5 @@
+package ds.map;
+import ds.list.LinkedList;
 public class HashMap<K,V> implements iMap<K,V> {
   private LinkedList<Pair<K,V>>[] data;
   private int buckets;
@@ -107,7 +109,7 @@ public class HashMap<K,V> implements iMap<K,V> {
         this.data[target].remove(count);
       } else {
         count++;
-      }  
+      }
     }
   }
 

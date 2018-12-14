@@ -1,3 +1,6 @@
+package ds.priorityqueue;
+import ds.list.ArrayList;
+import ds.util.pair;
 import java.lang.Comparable;
 public class ArrayPriorityQueue<K extends Comparable<K>,V> implements iPriorityQueue<K,V> {
   private ArrayList<Pair<K,V>> data;

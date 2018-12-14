@@ -1,3 +1,5 @@
+package ds.map;
+import ds.list.ArrayList;
 public class ArrayMap<K,V> implements iMap<K,V>{
   private ArrayList<Pair<K,V>> data;
   public ArrayMap(){
