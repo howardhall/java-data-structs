@@ -1,12 +1,11 @@
 package src;
-import src.*;
 import src.pq.HeapPriorityQueue;
 public class test {
   public static void main(String[] args) {
     PQtest();
   }
   public static void PQtest(){
-    HeapPriorityQueue<Short,String> pq = new HeapPriorityQueue<Short,String>();
+    HeapPriorityQueue<Short,String> pq = new HeapPriorityQueue<Short,String>(2);
     pq.add((short) 4,"first");
     pq.add((short) 12,"second");
     pq.add((short) 99,"tenth");
@@ -17,15 +16,16 @@ public class test {
     pq.add((short) 36,"fifth");
     pq.add((short) 22,"fourth");
     pq.add((short) 64,"eighth");
-    System.out.println(pq.peek());
+    pq.updateKey((short)0, "fifth");
+    System.out.println("\n\n"+pq+"\n\n");
     while(!pq.isEmpty()){
       System.out.println(pq.remove());
     }
-    pq.add((short) 36,"water");
-    pq.add((short) 22,"grass");
-    pq.add((short) 64,"fire");
-    System.out.println(pq.contains("fire"));
-    System.out.println(pq);
+     HeapPriorityQueue<Integer,String> pq2 = new HeapPriorityQueue<Integer,String>(4);
+    for(int i=1;i<13;i++){
+      pq2.add(i%7,String.valueOf(i%7));
+    }
+    System.out.println(pq2);
   }
   /*
   public static void SetTest(){
