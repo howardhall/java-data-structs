@@ -8,9 +8,9 @@ map/HashMap             map implementation featuring a hash table of key value p
 pq/ArrayPriorityQueue   priority queue implementation featuring an array listed that is sorted on removal
 pq/LinkedPriorityQueue  priority queue implementation featuring a linked list that is sorted on insertion
 pq/HeapPriorityQueue    priority queue implementation featuring a min-heap
-queue/Deque double      ended queue implementation using a linked list. (insert at rear)
-queue/Queue queue       implementation using a linked list (insert at rear)
-queue/Stack stack       implementation using a linked lst (insert at rear)
-set/ArraySet set        implementation using an array list
-set/HashSet set         implementation using a hash table
+queue/Deque             ended queue implementation using a linked list. (insert at rear)
+queue/Queue             implementation using a linked list (insert at rear)
+queue/Stack             implementation using a linked lst (insert at rear)
+set/ArraySet            implementation using an array list
+set/HashSet             implementation using a hash table
 ```
