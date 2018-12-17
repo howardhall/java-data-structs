@@ -1,8 +1,18 @@
 package src;
 import src.pq.HeapPriorityQueue;
+import src.tree.BinarySearchTree;
 public class test {
   public static void main(String[] args) {
-    PQtest();
+    BinaryTreeTest();
+  }
+  public static void BinaryTreeTest(){
+    BinarySearchTree<Integer> tree =  new BinarySearchTree<Integer>();
+    for(int i=5;i<15;i++){
+      tree.add(i%10);
+    }
+    System.out.println(tree.toString(1));
+    System.out.println(tree.toString(2));
+    System.out.println(tree.toString(3));
   }
   public static void PQtest(){
     HeapPriorityQueue<Short,String> pq = new HeapPriorityQueue<Short,String>(2);
