@@ -26,7 +26,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     this.add(e,this.size);
   }
   public E get(int index){
-    if(index < 0 || index > this.size){
+    if(index < 0 || index > this.capacity){
       throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
     }
     @SuppressWarnings("unchecked")
@@ -41,7 +41,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
   }
   public void extend(int c){
     Object[] temp = new Object[c];
-    System.arraycopy(this.data,0,temp,0,this.size);
+    System.arraycopy(this.data,0,temp,0,this.capacity-1);
     this.data = temp;
     this.capacity = c;
   }
@@ -93,7 +93,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     return this.remove(this.size() - 1);
   }
   public void set(int index, E e){
-    if(index < 0 || index >= this.size){
+    if(index < 0 || index >= this.capacity){
       return;
     }
     this.data[index] = e;
