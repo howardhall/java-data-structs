@@ -1,9 +1,40 @@
 package src;
-import src.pq.HeapPriorityQueue;
-import src.tree.BinarySearchTree;
+import src.list.*;
+import src.map.*;
+import src.pq.*;
+import src.queue.*;
+import src.set.*;
+import src.tree.*;
+import src.util.*;
+import src.graph.*;
 public class test {
   public static void main(String[] args) {
-    BinaryTreeTest();
+    GraphTest();
+  }
+  public static void GraphTest(){
+    ListGraph<Double> g = new ListGraph<Double>();
+    GraphNode<Double> n1 = new GraphNode<Double>(1.0);
+    GraphNode<Double> n2 = new GraphNode<Double>(2.0);
+    GraphNode<Double> n3 = new GraphNode<Double>(3.0);
+    GraphNode<Double> n4 = new GraphNode<Double>(4.0);
+    GraphNode<Double> n5 = new GraphNode<Double>(5.0);
+    GraphNode<Double> n6 = new GraphNode<Double>(6.0);
+    GraphNode<Double> n7 = new GraphNode<Double>(7.0);
+    g.addNode(n1);
+    g.addNode(n2);
+    g.addNode(n3);
+    g.addNode(n4);
+    g.addNode(n5);
+    g.addNode(n6);
+    g.addNode(n7);
+    g.addEdge(n1,n2);
+    g.addEdge(n3,n2);
+    g.addEdge(n3,n4);
+    g.addEdge(n5,n4);
+    g.addEdge(n5,n6);
+    g.addEdge(n7,n6);
+    g.addEdge(n7,n1);
+    System.out.println(g.nodeCount());
   }
   public static void BinaryTreeTest(){
     BinarySearchTree<Integer> tree =  new BinarySearchTree<Integer>();
@@ -37,7 +68,6 @@ public class test {
     }
     System.out.println(pq2);
   }
-  /*
   public static void SetTest(){
     HashSet<Integer> s = new HashSet<Integer>(5);
     for(int i=0;i<40;i++){
@@ -106,10 +136,10 @@ public class test {
     System.out.println(al.remove(3));
     System.out.println(al);
     al.add("lmao");
+    al.removeRange(2,12);
     System.out.println(al.get(0));
     System.out.println(al);
     System.out.println(al.size());
     System.out.println(al.indexOf("lmao"));
   }
-  */
 }

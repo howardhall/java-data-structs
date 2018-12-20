@@ -14,7 +14,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
   }
   public void add(E e, int index){
     if(index < 0 ){
-      return;
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
     }
     if(index >= capacity){
       this.extend();
@@ -27,7 +27,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
   }
   public E get(int index){
     if(index < 0 || index > this.size){
-      return null;
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
     }
     @SuppressWarnings("unchecked")
     final E e = (E) this.data[index];
@@ -66,6 +66,9 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
   public E remove(int index){
     final E e = this.get(index);
     Object[] temp = new Object[this.capacity];
+    if(index < 0 || index > this.size){
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
+    }
     if(index > 0){
       System.arraycopy(this.data,0,temp,0,index);
     }
@@ -95,9 +98,14 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     }
     this.data[index] = e;
   }
+  public void ensureCapacity(int i){
+    if(this.capacity < i){
+      this.extend(i);
+    }
+  }
   public void removeRange(int start, int end){
     if(end > start || start < 0 || end > this.capacity){
-      return;
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(start) + " to " + String.valueOf(end));
     }
     for(int i = start;i <= end; i++){
       this.remove(i);

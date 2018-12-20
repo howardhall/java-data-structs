@@ -46,7 +46,7 @@ public class LinkedList<E> implements Iterable<E>, iList<E>{
   }
   public E get(int index){
     if(this.size() <= index || index < 0){
-      return null;
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
     }
     int counter = 0;
     Node<E> ptr = this.head;
@@ -65,7 +65,7 @@ public class LinkedList<E> implements Iterable<E>, iList<E>{
   }
   public boolean add(int index, Node<E> n){
     if(index < 0 || index > this.size()){
-      return false;
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
     } else if (index == 0){
       this.addFirst(n);
       return true;
@@ -111,7 +111,7 @@ public class LinkedList<E> implements Iterable<E>, iList<E>{
   }
   public E remove(int index){
     if(index < 0 || index >= this.size()){
-      return null;
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
     } else if(index == 0){
       return this.removeFirst();
     } else if(index == this.size()-1){
@@ -152,8 +152,8 @@ public class LinkedList<E> implements Iterable<E>, iList<E>{
   }
   public boolean set(int index, E e){
     Node<E> ptr = this.head;
-    if (index > this.size()){
-      return false;
+    if (index > this.size() || index < 0){
+      throw new ArrayIndexOutOfBoundsException(String.valueOf(index));
     }
     for(int i=0;i<index;i++){
       ptr = ptr.getNext();
