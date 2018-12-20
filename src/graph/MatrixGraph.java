@@ -26,30 +26,32 @@ public class MatrixGraph<T,W extends Number> {
   public int addNode(T t){
     this.ensureCapacity(++this.size);
     this.V.add(t);
-    return this.size()-1;
+    return this.size - 1;
   }
-  public void addEdge(int n1, int n2, int weight){
+  public void addEdge(int n1, int n2, W weight){
     if(n1 < 0 || n2 < 0 || n1 > this.size || n2 > this.size){
       return;
       //TODO exception
     }
-    this.E[n1][n2] = weight;
+    this.E.get(n1).set(n2,weight);
     if(!this.directed){
-      this.E[n2][n1] = weight;
+      this.E.get(n2).set(n1,weight);
     }
   }
   public boolean containsNode(T t){
     return this.V.contains(t);
   }
   public boolean containsEdge(int n1, int n2){
-    return this.E[n1][n2] != 0;
+    return this.E.get(n1).get(n2) != null;
   }
   public int getNode(T t){
     return this.V.indexOf(t);
   }
-  public int getEdge(int n1, int n2){
-    return this.E[n1][n2];
+  public W getEdge(int n1, int n2){
+    return this.E.get(n1).get(n2);
   }
+  public T removeNode(int i);
+  public W removeEdge(int n1, int n2)
   public ensureCapacity(int size){
     this.V.ensureCapacity(size);
     this.E.ensureCapacity(size);
