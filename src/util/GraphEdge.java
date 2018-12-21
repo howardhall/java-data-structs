@@ -15,4 +15,7 @@ public class GraphEdge<W> {
   public W getWeight(){
     return weight;
   }
+  public int getDest(){
+    return dest;
+  }
 }

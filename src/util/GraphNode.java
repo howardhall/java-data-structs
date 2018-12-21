@@ -45,4 +45,14 @@ public class GraphNode<T,W extends Number> {
   public boolean equal(T t){
     return data.equals(t);
   }
+  public ArrayList<Integer> children(){
+    ArrayList<Integer> c = new ArrayList<Integer>();
+    for(GraphEdge<W> e : E){
+      c.add(e.getDest());
+    }
+    return c;
+  }
+  public T get(){
+    return data;
+  }
 }

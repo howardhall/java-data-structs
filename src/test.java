@@ -11,19 +11,39 @@ public class test {
   public static void main(String[] args) {
     GraphTest();
   }
+  public static void GraphTest2(){
+    MatrixGraph<String> g = new MatrixGraph<String>(12);
+    for(int i=0;i<12;i++){
+      g.addNode("Node "+String.valueOf(i));
+    }
+    g.addEdge(1,3);
+    g.addEdge(5,3);
+    g.addEdge(1,1);
+    g.addEdge(1,7);
+    g.addEdge(2,9);
+    g.addEdge(2,0);
+    g.addEdge(0,7);
+    System.out.println(g.getEdge(3,1));
+    System.out.println(g);
+  }
   public static void GraphTest(){
     ListGraph<String,Integer> g = new ListGraph<String,Integer>(15,false);
     for(int i=0;i<12;i++){
       g.addNode("Node "+String.valueOf(i));
     }
+    g.addEdge(1,8,10);
     g.addEdge(1,3,10);
     g.addEdge(5,3,10);
+    g.addEdge(8,4,10);
+    g.addEdge(6,4,10);
+    g.addEdge(6,11,10);
     g.addEdge(1,1,10);
     g.addEdge(1,7,10);
     g.addEdge(2,9,10);
     g.addEdge(2,0,10);
     g.addEdge(0,7,10);
-    System.out.println(g.getEdge(3,1));
+    System.out.println(g.BFS(1));
+    System.out.println(g.DFS(1));
   }
   public static void BinaryTreeTest(){
     BinarySearchTree<Integer> tree =  new BinarySearchTree<Integer>();

@@ -100,6 +100,13 @@ public class LinkedList<E> implements Iterable<E>, iList<E>{
     if(this.isEmpty()){
       return null;
     }
+    if(this.size() == 1){
+      Node<E> ptr = this.head;
+      this.head = null;
+      this.tail = null;
+      this.size--;
+      return ptr.get();
+    }
     Node<E> ptr = this.head;
     while(ptr.getNext().getNext() != null){
       ptr = ptr.getNext();

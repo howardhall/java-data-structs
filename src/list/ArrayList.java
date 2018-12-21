@@ -1,5 +1,6 @@
 package src.list;
 import java.util.Iterator;
+import java.util.Arrays;
 public class ArrayList<E> implements Iterable<E>, iList<E>{
   private Object[] data;
   private int size;
@@ -40,10 +41,11 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     this.extend((int) (this.capacity*1.5)+1);
   }
   public void extend(int c){
-    Object[] temp = new Object[c];
-    System.arraycopy(this.data,0,temp,0,this.capacity-1);
-    this.data = temp;
+    // Object[] temp = new Object[c];
+    // System.arraycopy(this.data,0,temp,0,this.capacity-1);
+    // this.data = temp;
     this.capacity = c;
+    this.data = Arrays.copyOf(this.data,c);
   }
   public void clear(){
     this.size = 0;
