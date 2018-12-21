@@ -1,52 +1,64 @@
 package src.graph;
+import src.list.ArrayList;
 import src.util.GraphNode;
-import src.map.HashMap;
-/* BROKEN
-public class ListGraph<E> {
-  private HashMap<Integer,GraphNode<E>> V;
-  private int size;
+import src.util.GraphEdge;
+public class ListGraph<T,W extends Number> {
+  private ArrayList<GraphNode<T,W>> V;
   private boolean directed;
   public ListGraph(){
-    this(false);
+    this(10,false);
   }
-  public ListGraph(boolean directed){
-    this.directed = directed;
-    this.size == 0;
-    this.V = new ArrayList<GraphNode<E>>();
+  public ListGraph(int s){
+    this(s,false);
   }
-  public void addNode(GraphNode<E> n){
-    this.V.add(this.size++,n);
+  public ListGraph(boolean d){
+    this(10,d);
   }
-  public void addEdge(GraphNode<E> n1, GraphNode<E> n2){
-    n1.addChild(n2);
-    if(!this.directed){
-      n2.addChild(n1);
+  public ListGraph(int s, boolean d){
+    V = new ArrayList<GraphNode<T,W>>(s);
+    directed = d;
+  }
+  public int addNode(T t){
+    V.add(new GraphNode<T,W>(t));
+    return V.size()-1;
+  }
+  public void addEdge(int n1, int n2, W w){
+    V.get(n1).addEdge(n2,w);
+    if(!directed){
+      V.get(n2).addEdge(n1,w);
     }
   }
-  public boolean containsNode(GraphNode<E> n){
-    return this.V.contains(n);
-  }
-  public boolean containsEdge(GraphNode<E> n1, GraphNode<E> n2){
-    return n1.hasChild(n2);
-  }
-  public void removeNode(GraphNode<E> n){
-    this.V.remove(n);
-  }
-  public void removeEdge(GraphNode<E> n1, GraphNode<E> n2){
-    n1.removeChild(n2);
-    if(!this.directed){
-      n2.removeChild(n1);
+  public boolean containsNode(T t){
+    for(GraphNode<T,W> n : V){
+      if(n.equal(t)){
+        return true;
+      }
     }
+    return false;
+  }
+  public boolean containsEdge(int n1, int n2){
+    return V.get(n1).hasEdge(n2);
+  }
+  public GraphNode<T,W> removeNode(int n){
+    return V.remove(n);
+  }
+  public W removeEdge(int n1, int n2){
+    if(!directed){
+      V.get(n2).removeEdge(n1);
+    }
+    return V.get(n1).removeEdge(n2);
+  }
+  public W getEdge(int n1, int n2){
+    return V.get(n1).getEdge(n2);
   }
   public int nodeCount(){
-    return this.V.size();
+    return V.size();
   }
   public int edgeCount(){
     int size = 0;
-    for(GraphNode<E> n : this.V){
-      size += n.degree();
+    for(GraphNode<T,W> t : V){
+      size += t.degree();
     }
     return size;
   }
 }
-*/

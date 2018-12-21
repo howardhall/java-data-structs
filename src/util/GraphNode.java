@@ -1,46 +1,48 @@
 package src.util;
+import src.util.GraphEdge;
 import src.list.ArrayList;
-public class GraphNode<E> {
-  private E data;
-  private ArrayList<GraphNode<E>> adjacent;
-  //private ArrayList<Integer> weights;
-  public GraphNode(E e){
-    this.data = e;
-    this.adjacent = new ArrayList<GraphNode<E>>();
+public class GraphNode<T,W extends Number> {
+  private T data;
+  private ArrayList<GraphEdge<W>> E;
+  public GraphNode(){
+    this(null);
   }
-  public E get(){
-    return this.data;
+  public GraphNode(T t){
+    data = t;
+    E = new ArrayList<GraphEdge<W>>();
   }
-  public void set(E e){
-    this.data = e;
+  public void addEdge(int e, W w){
+    E.add(new GraphEdge<W>(e,w));
   }
-  public GraphNode<E> getChild(int index){
-    return this.adjacent.get(index);
-  }
-  public int degree(){
-    return this.adjacent.size();
-  }
-  public int size(){
-    return this.degree();
-  }
-  // public boolean equals(E e){
-  //   return this.data.equals(e);
-  // }
-  public GraphNode<E> getChild(E e){
-    for(GraphNode<E> item : this.adjacent){
-      if(item.equals(e)){
-        return item;
+  public W getEdge(int n){
+    for(GraphEdge<W> w : E){
+      if(w.equals(n)){
+        return w.getWeight();
       }
     }
     return null;
   }
-  public boolean hasChild(GraphNode<E> n){
-    return this.adjacent.contains(n);
+  public boolean hasEdge(int d){
+    for(GraphEdge<W> w : E){
+      if(w.equals(d)){
+        return true;
+      }
+    }
+    return false;
   }
-  public void addChild(GraphNode<E> n){
-    this.adjacent.add(n);
+  public W removeEdge(int n){
+    for(GraphEdge<W> w : E){
+      if(w.equals(n)){
+        E.remove(w);
+        return w.getWeight();
+      }
+    }
+    return null;
   }
-  public GraphNode<E> removeChild(GraphNode<E> n){
-    return this.adjacent.remove(n);
+  public int degree(){
+    return E.size();
+  }
+  public boolean equal(T t){
+    return data.equals(t);
   }
 }

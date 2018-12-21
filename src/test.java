@@ -12,18 +12,18 @@ public class test {
     GraphTest();
   }
   public static void GraphTest(){
-    MatrixGraph<String,Integer> g = new MatrixGraph<String,Integer>(15);
-    for(int i=0;i<7;i++){
+    ListGraph<String,Integer> g = new ListGraph<String,Integer>(15,false);
+    for(int i=0;i<12;i++){
       g.addNode("Node "+String.valueOf(i));
     }
     g.addEdge(1,3,10);
-    g.addEdge(15,3,10);
+    g.addEdge(5,3,10);
     g.addEdge(1,1,10);
     g.addEdge(1,7,10);
     g.addEdge(2,9,10);
     g.addEdge(2,0,10);
     g.addEdge(0,7,10);
-    System.out.println(g.getEdge(1,3));
+    System.out.println(g.getEdge(3,1));
   }
   public static void BinaryTreeTest(){
     BinarySearchTree<Integer> tree =  new BinarySearchTree<Integer>();
