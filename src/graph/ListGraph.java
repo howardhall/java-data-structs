@@ -48,6 +48,17 @@ public class ListGraph<T,W extends Number> {
     }
     return V.get(n1).removeEdge(n2);
   }
+  public GraphNode<T,W> getNode(int n){
+    return V.get(n);
+  }
+  public int getIndex(T t){
+    for(int i=0;i<V.size();i++){
+      if(V.get(i).equal(t)){
+        return i;
+      }
+    }
+    return -1;
+  }
   public W getEdge(int n1, int n2){
     return V.get(n1).getEdge(n2);
   }
