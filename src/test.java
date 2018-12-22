@@ -9,8 +9,7 @@ import src.util.*;
 import src.graph.*;
 public class test {
   public static void main(String[] args) {
-    //ArrayListTest();
-    LinkedHashSetTest();
+    PQtest();
   }
   public static void LinkedHashSetTest(){
     LinkedHashSet<String> s = new LinkedHashSet<String>(12);
@@ -67,7 +66,7 @@ public class test {
     System.out.println(tree.toString(3));
   }
   public static void PQtest(){
-    HeapPriorityQueue<Short,String> pq = new HeapPriorityQueue<Short,String>(2);
+    ArrayPriorityQueue<Short,String> pq = new ArrayPriorityQueue<Short,String>(2);
     pq.add((short) 4,"first");
     pq.add((short) 12,"second");
     pq.add((short) 99,"tenth");
@@ -78,7 +77,7 @@ public class test {
     pq.add((short) 36,"fifth");
     pq.add((short) 22,"fourth");
     pq.add((short) 64,"eighth");
-    pq.updateKey((short)0, "fifth");
+    //pq.updateKey((short)0, "fifth");
     System.out.println("\n\n"+pq+"\n\n");
     while(!pq.isEmpty()){
       System.out.println(pq.remove());
@@ -121,7 +120,7 @@ public class test {
     System.out.println(map.get(30.0));
   }
   public static void HashmapTest(){
-    HashMap<Integer,String> map = new HashMap<Integer,String>();
+    Map<Integer,String> map = new LinkedHashMap<Integer,String>();
     for(int i=0;i<241;i++){
       map.add(i%50,String.valueOf(i));
     }
@@ -136,6 +135,9 @@ public class test {
     map.set(30,"hey guys");
     System.out.println(map);
     System.out.println(map.get(30));
+    for(Pair<Integer,String> p : map){
+      System.out.println(p);
+    }
 
   }
   public static void StackQueueTest(){

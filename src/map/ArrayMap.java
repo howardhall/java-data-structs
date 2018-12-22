@@ -1,7 +1,8 @@
 package src.map;
 import src.list.ArrayList;
 import src.util.Pair;
-public class ArrayMap<K,V> implements iMap<K,V>{
+import java.util.Iterator;
+public class ArrayMap<K,V> extends Map<K,V> {
   private ArrayList<Pair<K,V>> data;
   public ArrayMap(){
     this.clear();
@@ -50,9 +51,6 @@ public class ArrayMap<K,V> implements iMap<K,V>{
       }
     }
   }
-  public boolean isEmpty(){
-    return this.size() == 0;
-  }
   public int size(){
     return this.data.size();
   }
@@ -97,5 +95,9 @@ public class ArrayMap<K,V> implements iMap<K,V>{
     }
     result = result.substring(0,result.length()-2);
     return result + "]";
+  }
+  @Override
+  public Iterator<Pair<K,V>> iterator() {
+    return this.data.iterator();
   }
 }

@@ -1,7 +1,8 @@
 package src.map;
 import src.list.LinkedList;
 import src.util.Pair;
-public class HashMap<K,V> implements iMap<K,V> {
+import java.util.Iterator;
+public class HashMap<K,V> extends Map<K,V> {
   private LinkedList<Pair<K,V>>[] data;
   private int buckets;
   public HashMap(){
@@ -67,9 +68,6 @@ public class HashMap<K,V> implements iMap<K,V> {
       }
     }
   }
-  public boolean isEmpty(){
-    return this.size() == 0;
-  }
   public int size(){
     int size = 0;
     for(LinkedList<Pair<K,V>> bucket : this.data){
@@ -120,5 +118,9 @@ public class HashMap<K,V> implements iMap<K,V> {
       result += "\n\t"+list.toString();
     }
     return result;
+  }
+  @Override
+  public Iterator<Pair<K,V>> iterator() {
+    return null;
   }
 }

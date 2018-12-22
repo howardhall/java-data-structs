@@ -7,6 +7,9 @@ public class ArrayPriorityQueue<K extends Comparable<K>,V> implements iPriorityQ
   public ArrayPriorityQueue(){
     this.data = new ArrayList<Pair<K,V>>();
   }
+  public ArrayPriorityQueue(int s){
+    this.data = new ArrayList<Pair<K,V>>(s);
+  }
   public void add(K k, V v){
     Pair<K,V> item = new Pair<K,V>(k,v);
     this.data.add(item);
