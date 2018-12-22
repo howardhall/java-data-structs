@@ -9,7 +9,7 @@ import src.util.*;
 import src.graph.*;
 public class test {
   public static void main(String[] args) {
-    PQtest();
+    GraphTest();
   }
   public static void LinkedHashSetTest(){
     LinkedHashSet<String> s = new LinkedHashSet<String>(12);
