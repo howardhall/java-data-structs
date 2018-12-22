@@ -1,6 +1,7 @@
 package src.set;
+import java.util.Iterator;
 import src.list.LinkedList;
-public class HashSet<E> implements iSet<E>{
+public class HashSet<E> extends Set<E> {
   private LinkedList<E>[] data;
   private int buckets;
   public HashSet(){
@@ -28,9 +29,6 @@ public class HashSet<E> implements iSet<E>{
     int target = e.hashCode() % this.buckets;
     return data[target].contains(e);
   }
-  public boolean isEmpty(){
-    return this.size() == 0;
-  }
   public int size(){
     int size = 0;
     for(LinkedList<E> item : this.data){
@@ -51,5 +49,9 @@ public class HashSet<E> implements iSet<E>{
     }
     result = result.substring(0, result.length() -2);
     return result + "}";
+  }
+  @Override
+  public Iterator<E> iterator(){
+    return null;
   }
 }

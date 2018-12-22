@@ -1,9 +1,8 @@
 package src.list;
 import java.util.Iterator;
-public class LinkedList<E> implements Iterable<E>, iList<E>{
+public class LinkedList<E> extends List<E> implements Iterable<E> {
   private Node<E> head;
   private Node<E> tail;
-  private int size;
   public LinkedList(){
     this.head = null;
     this.tail = null;
@@ -84,9 +83,6 @@ public class LinkedList<E> implements Iterable<E>, iList<E>{
     this.size++;
     return true;
   }
-  public boolean isEmpty(){
-    return this.size == 0;
-  }
   public E removeFirst(){
     if(this.isEmpty()){
       return null;
@@ -134,9 +130,6 @@ public class LinkedList<E> implements Iterable<E>, iList<E>{
     ptr.setNext(tmp.getNext());
     this.size--;
     return tmp.get();
-  }
-  public int size(){
-    return this.size;
   }
   public void clear(){
     this.head = null;

@@ -1,6 +1,7 @@
 package src.set;
+import java.util.Iterator;
 import src.list.ArrayList;
-public class ArraySet<E> implements iSet<E>{
+public class ArraySet<E> extends Set<E> {
   private ArrayList<E> data;
   public ArraySet(){
     this.clear();
@@ -16,9 +17,6 @@ public class ArraySet<E> implements iSet<E>{
   public boolean contains(E e){
     return this.data.contains(e);
   }
-  public boolean isEmpty(){
-    return this.data.isEmpty();
-  }
   public int size(){
     return this.data.size();
   }
@@ -27,5 +25,9 @@ public class ArraySet<E> implements iSet<E>{
   }
   public String toString(){
     return this.data.toString("{","}");
+  }
+  @Override
+  public Iterator<E> iterator(){
+    return data.iterator();
   }
 }

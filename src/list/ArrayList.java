@@ -1,9 +1,8 @@
 package src.list;
 import java.util.Iterator;
 import java.util.Arrays;
-public class ArrayList<E> implements Iterable<E>, iList<E>{
+public class ArrayList<E> extends List<E>{
   private Object[] data;
-  private int size;
   protected int capacity;
   public ArrayList(int c){
     this.data = new Object[c];
@@ -34,9 +33,6 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     final E e = (E) this.data[index];
     return e;
   }
-  public int size(){
-    return this.size;
-  }
   public void extend(){
     this.extend((int) (this.capacity*1.5)+1);
   }
@@ -61,9 +57,6 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
       }
     }
     return -1;
-  }
-  public boolean isEmpty(){
-    return this.size == 0;
   }
   public E remove(int index){
     final E e = this.get(index);
@@ -106,7 +99,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     }
   }
   public void removeRange(int start, int end){
-    if(end > start || start < 0 || end > this.capacity){
+    if(end < start || start < 0 || end > this.capacity){
       throw new ArrayIndexOutOfBoundsException(String.valueOf(start) + " to " + String.valueOf(end));
     }
     for(int i = start;i <= end; i++){
@@ -131,10 +124,11 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
     result += this.get(this.size-1).toString();
     return result + end;
   }
-  public Iterator<E> iterator(){
-    return new Iter<E>();
+  @Override
+  public Iterator<E> iterator() {
+    return new Iter();
   }
-  private class Iter<E> implements Iterator<E>{
+  private class Iter implements Iterator<E>{
     private int index;
     public Iter(){
       this.index = 0;
@@ -143,10 +137,7 @@ public class ArrayList<E> implements Iterable<E>, iList<E>{
       return (this.index < size);
     }
     public E next(){
-      Object data = get(this.index++);
-      @SuppressWarnings("unchecked")
-      E e = (E) data;
-      return e;
+      return get(this.index++);
     }
   }
 }

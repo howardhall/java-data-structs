@@ -9,7 +9,19 @@ import src.util.*;
 import src.graph.*;
 public class test {
   public static void main(String[] args) {
-    GraphTest();
+    //ArrayListTest();
+    LinkedHashSetTest();
+  }
+  public static void LinkedHashSetTest(){
+    LinkedHashSet<String> s = new LinkedHashSet<String>(12);
+    for(int i=0;i<144;i+=6){
+      s.add(String.valueOf(i));
+    }
+    System.out.println(s);
+    for(String q : s){
+      System.out.println("item");
+    }
+    System.out.println(s.size());
   }
   public static void GraphTest2(){
     MatrixGraph<String> g = new MatrixGraph<String>(12);
@@ -78,15 +90,18 @@ public class test {
     System.out.println(pq2);
   }
   public static void SetTest(){
-    HashSet<Integer> s = new HashSet<Integer>(5);
+    Set<Integer> s = new HashSet<Integer>(5);
+    Set<Integer> t = new ArraySet<Integer>();
     for(int i=0;i<40;i++){
       s.add(i%15);
+      t.add(i%22);
     }
     s.remove(12);
     s.remove(6);
     System.out.println(s.contains(5));
     s.add(5);
     System.out.println(s);
+    System.out.println(t);
   }
   public static void ArrayMapTest(){
     ArrayMap<Double,String> map = new ArrayMap<Double,String>();
@@ -135,20 +150,23 @@ public class test {
     System.out.println(q.pull());
   }
   public static void ArrayListTest(){
-    ArrayList<String> al = new ArrayList<String>();
-    LinkedList<String> ll = new LinkedList<String>();
-    for(int i=0;i<5;i++){
+    List<String> al = new ArrayList<String>();
+    List<String> ll = new LinkedList<String>();
+    for(int i=0;i<35;i++){
       String text = String.valueOf(i);
       al.add("ArrayList : "+text);
       ll.add("LinkedList : "+text);
     }
-    System.out.println(al.remove(3));
+    //System.out.println(al.remove(3));
     System.out.println(al);
     al.add("lmao");
-    al.removeRange(2,12);
+    //al.removeRange(2,12);
     System.out.println(al.get(0));
     System.out.println(al);
     System.out.println(al.size());
     System.out.println(al.indexOf("lmao"));
+    for(String s : ll){
+      System.out.println(s);
+    }
   }
 }
