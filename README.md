@@ -1,7 +1,6 @@
 # Some data structures in java
 
 ## Comparison of List implementations
----
 #### ArrayList
 List implementation using a resizable array.
 Array will expand when there is no extra space.
@@ -28,7 +27,6 @@ Often has poor performance due to cache misses.
 2. LinkedList can be good for short lists such as hash table buckets.
 
 ## Comparison of Map implementations
----
 #### ArrayMap
 Map implementation using an ArrayList of key-value pair.
 Elements remain in the order they were inserted in.
