@@ -9,7 +9,29 @@ import src.util.*;
 import src.graph.*;
 public class test {
   public static void main(String[] args) {
-    GraphTest();
+    RedBlackBinarySearchTreeTest();
+  }
+  public static void RedBlackBinarySearchTreeTest(){
+    RedBlackBinaryTree<Integer> tree = new RedBlackBinaryTree<Integer>();
+    //final int[] nums = {5,3,7,2,4,6,8};
+    final int[] nums = {8,4,2,6,1,3,5,7};
+    for(int i : nums){
+      tree.add(i);
+    }
+    System.out.println(tree);
+    System.out.println(tree.root(1));
+    tree.LeftTest();
+    System.out.println(tree);
+    System.out.println(tree.root(1));
+    tree.rightTest();
+    System.out.println(tree);
+    System.out.println(tree.root(1));
+    // tree.moveLeftTest();
+    // System.out.println(tree);
+    // System.out.println(tree.root(1));
+    tree.moveRightTest();
+    System.out.println(tree);
+    System.out.println(tree.root(1));
   }
   public static void LinkedHashSetTest(){
     LinkedHashSet<String> s = new LinkedHashSet<String>(12);
