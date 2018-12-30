@@ -1,5 +1,4 @@
 # Some data structures in java
-### RedBlackBinaryTree.java is incredibly broken.
 ## Comparison of List implementations
 #### ArrayList
 List implementation using a resizable array.  
