@@ -19,7 +19,11 @@ function run (){
   cd build
   java $target
 }
-while getopts cbtr opt; do
+function document (){
+  mkdir docs
+  javadoc -sourcepath .  -d docs -subpackages . 
+}
+while getopts cbtrd opt; do
   case $opt in
     c)
       echo "clean"
@@ -39,6 +43,10 @@ while getopts cbtr opt; do
     r)
       echo "run"
       run $2
+      ;;
+    d)
+      echo "Updating documentation"
+      document
       ;;
   esac
 done
