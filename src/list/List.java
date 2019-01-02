@@ -1,7 +1,7 @@
 package src.list;
 import java.util.Iterator;
 /**
- * Parent abstract class implemting the iList interface
+ * Parent abstract class implemting the iList interface.
  * @author Howard Hall-Benn
  * @since v1.0
  */
