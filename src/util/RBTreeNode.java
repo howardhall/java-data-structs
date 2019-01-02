@@ -16,6 +16,9 @@ public class RBTreeNode<E extends Comparable<E>> {
   public boolean isRed(){
     return colour;
   }
+  public boolean isBlack(){
+    return !colour;
+  }
   public int size(int in){
     if(left != null){
       in += left.size();

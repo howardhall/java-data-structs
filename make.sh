@@ -21,9 +21,16 @@ function run (){
 }
 function document (){
   mkdir docs
-  javadoc -sourcepath .  -d docs -subpackages . 
+  javadoc -sourcepath .  -d docs -subpackages .
 }
-while getopts cbtrd opt; do
+function commit (){
+  git add .
+  echo -n "Enter commit message: "
+  read msg
+  git commit -m "$msg"
+  git push
+}
+while getopts cbtrdg opt; do
   case $opt in
     c)
       echo "clean"
@@ -47,6 +54,10 @@ while getopts cbtrd opt; do
     d)
       echo "Updating documentation"
       document
+      ;;
+    g)
+      echo "Git commit"
+      commit
       ;;
   esac
 done

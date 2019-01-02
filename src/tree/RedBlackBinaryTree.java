@@ -1,13 +1,17 @@
 package src.tree;
 import java.lang.Comparable;
 import src.util.RBTreeNode;
-public class RedBlackBinaryTree<E extends Comparable<E>> implements iTree<E> {
+public class RedBlackBinaryTree<E extends Comparable<E>> {
   private static final boolean RED = true;
   private static final boolean BLACK = false;
   private RBTreeNode<E> root;
   private int size;
+  public RedBlackBinaryTree(){
+    this.clear();
+  }
   public void add(E e){
     this.root = this.addToSubTree(e,this.root);
+    this.size++;
   }
   private RBTreeNode<E> addToSubTree(E e,RBTreeNode<E> n){
     if(n == null){
@@ -21,7 +25,65 @@ public class RedBlackBinaryTree<E extends Comparable<E>> implements iTree<E> {
     return n;
   }
   public E remove(){
-    return null;
+    return removeMin();
+  }
+  public E removeMin(){
+    RBTreeNode<E> n = root;
+    while(n.getLeft() != null){
+      n = n.getLeft();
+    }
+    E e = n.get();
+    if(this.root.getLeft().isBlack() && this.root.getRight().isBlack()){
+      root.setColour(RED);
+    }
+    root = this.removeMin(root);
+    root.setColour(BLACK);
+    return e;
+  }
+  private RBTreeNode<E> removeMin(RBTreeNode<E> n){
+    if(n.getLeft() == null){
+      return null;
+    }
+    if(n.getLeft().isBlack() && n.getLeft().getLeft().isBlack()){
+      n = this.redLeft(n);
+    }
+    n.setLeft(this.removeMin(n.getLeft()));
+    return this.balance(n);
+  }
+  public E removeMax(){
+    RBTreeNode<E> n = root;
+    while(n.getRight() != null){
+      n = n.getRight();
+    }
+    E e = n.get();
+    if(this.root.getLeft().isBlack() && this.root.getRight().isBlack()){
+      root.setColour(RED);
+    }
+    root = this.removeMax(root);
+    return e;
+  }
+  private RBTreeNode<E> removeMax(RBTreeNode<E> n){
+    if(n.getLeft().isRed()){
+      n = this.rotateRight(n);
+    }
+    if(n.getRight() == null){
+      return null;
+    }
+    if(n.getRight().isBlack() && n.getRight().getLeft().isBlack()){
+      n = this.redRight(n);
+    }
+    n.setRight(this.removeMax(n.getRight()));
+    return this.balance(n);
+  }
+  public void clear(){
+    this.root = null;
+    this.size = 0;
+  }
+  public int size(){
+    return this.size;
+  }
+  public boolean isEmpty(){
+    return this.size == 0;
   }
   public boolean contains(E e){
     RBTreeNode<E> curr = root;
@@ -36,14 +98,23 @@ public class RedBlackBinaryTree<E extends Comparable<E>> implements iTree<E> {
     }
     return false;
   }
-  public void update(E e1, E e2){
-    return;
+  private RBTreeNode<E> balance(RBTreeNode<E> n){
+    if(n.getRight().isRed()){
+      n = this.rotateLeft(n);
+    }
+    if(n.getLeft().isRed() && n.getLeft().getLeft().isRed()){
+      n = this.rotateRight(n);
+    }
+    if(n.getLeft().isRed() && n.getRight().isRed()){
+      n.flipColors();
+    }
+    return n;
   }
-  public RBTreeNode<E> root(int i){
+  public RBTreeNode<E> rootNode(){
     return root;
   }
   public E root(){
-    return null;
+    return this.root.get();
   }
   public String toString(){
     return this.toString(2);
@@ -91,20 +162,22 @@ public class RedBlackBinaryTree<E extends Comparable<E>> implements iTree<E> {
     s += n.get().toString() + ", ";
     return s;
   }
-  public boolean isEmpty(){
-    return root == null;
+  private RBTreeNode<E> redLeft(RBTreeNode<E> n){
+    n.flipColors();
+    if(n.getRight().getLeft().isRed()){
+      n.setRight(this.rotateRight(n.getRight()));
+      n = this.rotateLeft(n);
+      n.flipColors();
+    }
+    return n;
   }
-  public void LeftTest(){
-    root = rotateLeft(root);
-  }
-  public void rightTest(){
-    root = rotateRight(root);
-  }
-  public void moveLeftTest(){
-    root = moveLeft(root.getLeft());
-  }
-  public void moveRightTest(){
-    root = moveRight(root.getLeft());
+  private RBTreeNode<E> redRight(RBTreeNode<E> n){
+    n.flipColors();
+    if(n.getLeft().getLeft().isRed()){
+      n = this.rotateRight(n);
+      n.flipColors();
+    }
+    return n;
   }
   private RBTreeNode<E> rotateLeft(RBTreeNode<E> n){
     RBTreeNode<E> x = n.getLeft();
