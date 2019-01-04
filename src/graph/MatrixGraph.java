@@ -1,11 +1,10 @@
 package src.graph;
 import src.list.ArrayList;
-public class MatrixGraph<T> {
+public class MatrixGraph<T> extends Graph<T> {
   private Object[] V;
   private boolean[][] E;
   private int size;
   private int capacity;
-  private boolean directed;
   public MatrixGraph(){
     this(10,false);
   }

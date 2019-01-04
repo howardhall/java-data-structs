@@ -1,7 +1,7 @@
 package src.util;
 import src.util.GraphEdge;
 import src.list.ArrayList;
-public class GraphNode<T,W extends Number> {
+public class GraphNode<T,W> {
   private T data;
   private ArrayList<GraphEdge<W>> E;
   public GraphNode(){

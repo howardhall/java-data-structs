@@ -9,12 +9,7 @@ import src.util.*;
 import src.graph.*;
 public class test {
   public static void main(String[] args) {
-    try{
-      RedBlackBinarySearchTreeTest();
-    } finally {
-      System.out.println("done");
-    }
-
+    GraphTest();
   }
   public static void RedBlackBinarySearchTreeTest(){
     RedBlackBinaryTree<Integer> tree = new RedBlackBinaryTree<Integer>();
@@ -52,21 +47,21 @@ public class test {
     System.out.println(g);
   }
   public static void GraphTest(){
-    ListGraph<String,Integer> g = new ListGraph<String,Integer>(15,false);
+    ListGraph<String> g = new ListGraph<String>(15,true);
     for(int i=0;i<12;i++){
       g.addNode("Node "+String.valueOf(i));
     }
-    g.addEdge(1,8,10);
-    g.addEdge(1,3,10);
-    g.addEdge(5,3,10);
-    g.addEdge(8,4,10);
-    g.addEdge(6,4,10);
-    g.addEdge(6,11,10);
-    g.addEdge(1,1,10);
-    g.addEdge(1,7,10);
-    g.addEdge(2,9,10);
-    g.addEdge(2,0,10);
-    g.addEdge(0,7,10);
+    g.addEdge(1,8);
+    g.addEdge(1,3);
+    g.addEdge(5,3);
+    g.addEdge(8,4);
+    g.addEdge(6,4);
+    g.addEdge(6,11);
+    g.addEdge(1,1);
+    g.addEdge(1,7);
+    g.addEdge(2,9);
+    g.addEdge(2,0);
+    g.addEdge(0,7);
     System.out.println(g.BFS(1));
     System.out.println(g.DFS(1));
   }

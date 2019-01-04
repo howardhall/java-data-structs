@@ -5,9 +5,8 @@ import src.util.GraphEdge;
 import src.pq.HeapPriorityQueue;
 import src.queue.Queue;
 import src.queue.Stack;
-public class ListGraph<T,W extends Number> {
-  private ArrayList<GraphNode<T,W>> V;
-  private boolean directed;
+public class ListGraph<T> extends Graph<T> {
+  private WeightedListGraph<T,Boolean> data;
   public ListGraph(){
     this(10,false);
   }
@@ -18,77 +17,41 @@ public class ListGraph<T,W extends Number> {
     this(10,d);
   }
   public ListGraph(int s, boolean d){
-    V = new ArrayList<GraphNode<T,W>>(s);
+    this.data = new WeightedListGraph<T,Boolean>(s,d);
     directed = d;
   }
   public int addNode(T t){
-    V.add(new GraphNode<T,W>(t));
-    return V.size()-1;
+    return this.data.addNode(t);
   }
-  public void addEdge(int n1, int n2, W w){
-    if(n1 < 0 || n2 < 0 || n1 > V.size() || n2 > V.size()){
-      return;
-    }
-    V.get(n1).addEdge(n2,w);
-    if(!directed){
-      V.get(n2).addEdge(n1,w);
-    }
+  public void addEdge(int n1, int n2){
+    this.data.addEdge(n1,n2,true);
   }
   public boolean containsNode(T t){
-    for(GraphNode<T,W> n : V){
-      if(n.equal(t)){
-        return true;
-      }
-    }
-    return false;
+    return this.data.containsNode(t);
   }
   public boolean containsEdge(int n1, int n2){
-    if(n1 < 0 || n2 < 0 || n1 > V.size() || n2 > V.size()){
-      return false;
-    }
-    return V.get(n1).hasEdge(n2);
+    return this.data.containsEdge(n1,n2);
   }
-  public GraphNode<T,W> removeNode(int n){
-    return V.remove(n);
+  public T getNode(int n){
+    return this.data.getNode(n).get();
   }
-  public W removeEdge(int n1, int n2){
-    if(n1 < 0 || n2 < 0 || n1 > V.size() || n2 > V.size()){
-      return null;
-    }
-    if(!directed){
-      V.get(n2).removeEdge(n1);
-    }
-    return V.get(n1).removeEdge(n2);
+  public boolean getEdge(int n1, int n2){
+    return this.data.getEdge(n1,n2);
   }
-  public GraphNode<T,W> getNode(int n){
-    if(n < 0 || n > V.size()){
-      return null;
-    }
-    return V.get(n);
+  public T removeNode(int n){
+    return this.data.removeNode(n).get();
   }
-  public int getIndex(T t){
-    for(int i=0;i<V.size();i++){
-      if(V.get(i).equal(t)){
-        return i;
-      }
-    }
-    return -1;
-  }
-  public W getEdge(int n1, int n2){
-    if(n1 < 0 || n2 < 0 || n1 > V.size() || n2 > V.size()){
-      return null;
-    }
-    return V.get(n1).getEdge(n2);
+  public boolean removeEdge(int n1, int n2){
+    return this.data.removeEdge(n1,n2);
   }
   public int nodeCount(){
-    return V.size();
+    return this.data.nodeCount();
   }
   public int edgeCount(){
-    int size = 0;
-    for(GraphNode<T,W> t : V){
-      size += t.degree();
-    }
-    return size;
+    return this.data.edgeCount();
+  }
+  public int getIndex(T t){
+    return this.data.getIndex(t);
   }
   public ArrayList<T> DFS(int s){
     ArrayList<Integer> disc = new ArrayList<Integer>();
@@ -99,14 +62,14 @@ public class ListGraph<T,W extends Number> {
       current = q.pop();
       if(!disc.contains(current)){
         disc.add(current);
-        for(int next : getNode(current).children()){
+        for(int next : this.data.getNode(current).children()){
           q.push(next);
         }
       }
     }
     ArrayList<T> result = new ArrayList<T>(disc.size());
     for(int n : disc){
-      result.add(getNode(n).get());
+      result.add(getNode(n));
     }
     return result;
   }
@@ -120,14 +83,14 @@ public class ListGraph<T,W extends Number> {
       current = q.pull();
       if(!disc.contains(current)){
         disc.add(current);
-        for(int next : getNode(current).children()){
+        for(int next : this.data.getNode(current).children()){
           q.push(next);
         }
       }
     }
     ArrayList<T> result = new ArrayList<T>(disc.size());
     for(int n : disc){
-      result.add(getNode(n).get());
+      result.add(getNode(n));
     }
     return result;
   }
