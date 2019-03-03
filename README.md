@@ -1,5 +1,7 @@
 # Some data structures in java
-Some of the names may vary from the more common name, this is to be a bit more descriptive.  
+- Some of the names may vary from the more common name, this is to be a bit more descriptive.  
+- Documentation is hosted at http://howardhx.ml/jds/ last updated 03/03/2019.  
+- Custom CSS for javadocs is from https://github.com/nisrulz/javadoc-themer  
 ## Comparison of List implementations
 #### ArrayList
 List implementation using a resizable array.  
@@ -133,6 +135,3 @@ Elements do remain in order.
 
 ## Comparison of Tree implementations
 ## Comparison of Graph implementations
-
-Check out custom Javadoc CSS generator at :  
-https://github.com/nisrulz/javadoc-themer
