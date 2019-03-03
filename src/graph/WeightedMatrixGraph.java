@@ -46,13 +46,44 @@ public class WeightedMatrixGraph<T,W> extends WeightedGraph<T,W> {
     }
     return E[n1][n2] != null;
   }
-  public GraphNode<T,W> getNode(int n){}
-  public W getEdge(int n1, int n2);
-  public GraphNode<T,W> removeNode(int n);
-  public W removeEdge(int n1, int n2);
-  public int nodeCount();
-  public int edgeCount();
-  public int getIndex(T t);
+  public W getEdge(int n1, int n2){
+    if(n1 > this.size || n1 < 0 || n2 > this.size || n2 < 0){
+      return null;
+    }
+    @SuppressWarnings("unchecked")
+    W result = (W) this.E[n1][n2];
+    return result;
+  }
+  public void removeNode(int n){
+  }
+  public W removeEdge(int n1, int n2){
+    W result = this.getEdge(n1,n2);
+    this.E[n1][n2] = null;
+    return result;
+  }
+  public int nodeCount(){
+    return this.size;
+  }
+  public int edgeCount(){
+    int count = 0;
+    for(Object[] o1 : this.E){
+      for(Object o2 : o1){
+        if(o2 != null){
+          count += 1;
+        }
+      }
+    }
+    if(this.directed){
+      return count/2;
+    }
+    return count;
+  }
+  public int getIndex(T t){
+    return 0;
+  }
+  public void expand(){
+
+  }
   // public ArrayList<T> DFS(int s)
   // public ArrayList<T> BFS(int s)
 }

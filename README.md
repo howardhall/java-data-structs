@@ -1,4 +1,5 @@
 # Some data structures in java
+Some of the names may vary from the more common name, this is to be a bit more descriptive.  
 ## Comparison of List implementations
 #### ArrayList
 List implementation using a resizable array.  
