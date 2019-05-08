@@ -6,10 +6,10 @@ public class WeightedMatrixGraph<T,W> extends WeightedGraph<T,W> {
   private int size;
   private int capacity;
   public WeightedMatrixGraph(){
-    this(10,false);
+    this(10,true);
   }
   public WeightedMatrixGraph(int s){
-    this(s,false);
+    this(s,true);
   }
   public WeightedMatrixGraph(boolean d){
     this(10,d);
@@ -73,16 +73,37 @@ public class WeightedMatrixGraph<T,W> extends WeightedGraph<T,W> {
         }
       }
     }
-    if(this.directed){
+    if(!this.directed){
       return count/2;
     }
     return count;
   }
   public int getIndex(T t){
-    return 0;
+    int count = 0;
+    for(Object o : this.V){
+      if(t.equals(o)){
+        return count;
+      }
+      count++;
+    }
+    return -1;
   }
-  public void expand(){
-
+  // O(n^2) lol, very slow
+  private void expand(){
+    int newCapacity = (int) 1.5 * this.capacity + 1;
+    Object[] V2 = new Object[newCapacity];
+    for(int i=0;i< V.length;i++){
+      V2[i] = V[i];
+    }
+    this.V = V2;
+    Object[][] E2 = new Object[newCapacity][newCapacity];
+    for(int i=0;i<E.length;i++){
+      for(int j=0;j<E.length;j++){
+        E2[i][j] = E[i][j];
+      }
+    }
+    this.E = E2;
+    this.capacity = newCapacity;
   }
   // public ArrayList<T> DFS(int s)
   // public ArrayList<T> BFS(int s)

@@ -9,7 +9,20 @@ import src.util.*;
 import src.graph.*;
 public class test {
   public static void main(String[] args) {
-    GraphTest();
+    RedBlackBinarySearchTreeTest();
+  }
+  public static void WeightedMatrixGraphTest(){
+    WeightedMatrixGraph<String,Integer> G = new WeightedMatrixGraph<String,Integer>(4,false);
+    String[] names = {"one","two","three","four","five"};
+    for( String name : names){
+      G.addNode(name);
+    }
+    for(int i=0;i<5;i++){
+      G.addEdge(i,(i+1)%5,10);
+      G.addEdge((i+1)%5,i,20);
+    }
+    System.out.println(G.getEdge(2,3));
+    System.out.println(G.edgeCount());
   }
   public static void RedBlackBinarySearchTreeTest(){
     RedBlackBinaryTree<Integer> tree = new RedBlackBinaryTree<Integer>();
@@ -18,7 +31,9 @@ public class test {
     for(int i : nums){
       tree.add(i);
     }
-    System.out.println(tree.removeMax());
+    //for(int i: nums){
+      System.out.println(tree.removeMax());
+    //}
   }
   public static void LinkedHashSetTest(){
     LinkedHashSet<String> s = new LinkedHashSet<String>(12);

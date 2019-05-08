@@ -130,4 +130,20 @@ public class WeightedListGraph<T,W> extends WeightedGraph<T,W> {
     }
     return result;
   }
+  // public int Dijkstra(int s, int t){
+  //   // W[] distances = new int[V.size()];
+  //   ArrayList<W> distances = new ArrayList<W>(V.size());
+  //   boolean[] visited = new boolean[V.size()];
+  //   HeapPriorityQueue<W extends Comparable<W>,Integer> PQ = new HeapPriorityQueue<W extends Comparable<W>,Integer>();
+  //   PQ.add(new W(0),s);
+  //   while(PQ.size() > 0){
+  //     int u = PQ.remove();
+  //     visited[u] = true;
+  //     for(GraphNode<T,W> v : this.getNode(u).children()){
+  //
+  //     }
+  //   }
+  //
+  //   return distances.get(t);
+  // }
 }

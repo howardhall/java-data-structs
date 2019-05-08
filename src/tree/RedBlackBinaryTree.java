@@ -99,6 +99,9 @@ public class RedBlackBinaryTree<E extends Comparable<E>> {
     return false;
   }
   private RBTreeNode<E> balance(RBTreeNode<E> n){
+    if(n.getLeft() == null || n.getRight() == null || n.getLeft().getLeft() == null){
+      return n;
+    }
     if(n.getRight().isRed()){
       n = this.rotateLeft(n);
     }
@@ -189,10 +192,12 @@ public class RedBlackBinaryTree<E extends Comparable<E>> {
   }
   private RBTreeNode<E> rotateRight(RBTreeNode<E> n){
     RBTreeNode<E> x = n.getRight();
-    n.setRight(x.getLeft());
-    x.setLeft(n);
-    x.setColour(x.getLeft().getColour());
-    x.getLeft().setColour(RED);
+    if(x != null){
+      n.setRight(x.getLeft());
+      x.setLeft(n);
+      x.setColour(x.getLeft().getColour());
+      x.getLeft().setColour(RED);
+    }
     return x;
   }
   private RBTreeNode<E> moveLeft(RBTreeNode<E> n){
